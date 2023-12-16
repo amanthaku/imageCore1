@@ -1,0 +1,53 @@
+﻿@model  List<imageCore1.Models.EmployTable>
+@{
+    ViewData["Title"] = "Read";
+}
+
+<h1>Read</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="text-center text-primary">Employe Image</h1>
+            <a class="btn btn-sm btn-primary flat-right p-1 m-1" asp-action="AddEmploye" asp-controller="Home">Add Employe</a>
+            <table class="table table-bordered table-hover">
+                <thead>
+               <tr class="text-center bg-dark text-light">
+                   
+                   <th>Id</th>
+                   <th>Brand</th>
+                   <th>Description</th>
+                   <th>Image</th>
+                   <th>Action</th>
+                
+               </tr>
+
+                </thead>
+                <tbody class="text-center">
+                    @if(Model != null)
+                    {
+                        
+                        @foreach(var i in Model)
+                        {
+                            var imagePath = "Content/emp/" + i.path;
+                            <tr>
+                                <td>@i.Id</td>
+                                <td>@i.Brand</td>
+                                <td>@i.Description</td>
+                                <td>
+                                    <img src="@imagePath" height="100px;" width="100px;"/>
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary " asp-action="Edit" asp-controller="Home" asp-route-id ="@i.Id">Edit</a>
+                                    <a class="btn btn-sm btn-danger "  onclick=" retrun confirm('Are your you want to delete image');"    asp-action="Delete" asp-controller="Home" asp-route-id ="@i.Id">Delete</a>
+                                    <a class="btn btn-sm btn-warning " asp-action="Details" asp-controller="Home" asp-route-id ="@i.Id">Details</a>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

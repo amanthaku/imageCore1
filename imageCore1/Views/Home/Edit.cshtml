@@ -1,0 +1,47 @@
+﻿@model imageCore1.Models.EmployTable
+@{
+    ViewData["Title"] = "AddEmploye";
+}
+
+<h1>AddEmploye</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-dark p-4 rounded-top">
+            <h1 class="text-center text-info">Update Employe Image</h1>
+            <form method="post" asp-action="Edit" enctype="multipart/form-data">
+                @*  @using (Html.BeginForm("AddEmploye","Home",FormMethod.Post)){ *@
+                <div asp-validation-summary="ModelOnly" class="text-danger text-center"></div>
+                <div class="from-group">
+                    <label asp-for="Brand"></label>
+                    <input type="text" asp-for="Brand" placeholder="Entre brand Name" class="form-control" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                    <input type="hidden" asp-for="Id"/>
+                </div>
+                <div class="from-group">
+                    <label asp-for="Description"></label>
+                    <textarea rows="2" cols="10" asp-for="Description" placeholder="Entre brand Description" class="form-control"> </textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <label asp-for="ImagePath"></label>
+                        <input type="file" class="form-control" asp-for="ImagePath" id="ChooseImg" />
+                    </div>
+                    <div class="col-4">
+                        <img src="/Content/emp/@Model.path " style="width:100px; height:100px; border:1px solid red; border-radius:10px; padding:10px;" alt="Employe Image" id="PrevImg" />
+                    </div>
+                </div>
+                <div class="from-group m-2">
+                    <input type="submit" class="btn btn-group-sm btn-primary float-right" value="Update" />
+                </div>
+                <a class="btn btn-sm btn-warning p-2 m-2" asp-action="Read" asp-controller="Home">Back To List</a>
+            </form>
+            @*   } *@
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+}
